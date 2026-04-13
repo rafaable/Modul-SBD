@@ -17,8 +17,19 @@
     City varchar(255) DEFAULT 'Sandnes'               -- ini cara pakai DEFAULT
    );
    ```
-   
-2. Constraint   
+   Ini yang di modul
+   ```sql
+   CREATE TABLE CUSTOMER (
+   CUS_CODE_NUMBER PRIMARY KEY,
+   CUS_LNAME VARCHAR(15) NOT NULL,
+   CUS_FNAME VARCHAR(15) NOT NULL,
+   CUS_INITIAL CHAR(1),
+   CUS_AREACODE CHAR(3) DEFAULT '615' NOT NULL CHECK(CUS_AREACODE IN ('615','713','931')),
+   CUS_PHONE CHAR(8) NOT NULL,
+   CUS_BALANCE_NUMBER(9,2) DEFAULT 0.00,
+   CONSTRAINT CUS_UI1 UNIQUE (CUS_LNAME, CUS_FNAME));``
+   ```
+3. Constraint   
    PRIMARY KEY  
    FOREIGN KEY  
    NOT NULL  
