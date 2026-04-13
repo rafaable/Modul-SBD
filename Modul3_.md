@@ -1,4 +1,3 @@
-## Daftar Isi
 ## Modul X CHATGPT X W3SCHOOL
 1. Tipe data & Parameter
    ```sql
