@@ -1,5 +1,5 @@
 ## Daftar Isi
-## Modul X  X W3SCHOOL
+## Modul X CHATGPT X W3SCHOOL
 1. Tipe data & Parameter
    ```sql
    CREATE TABLE mahasiswa (
