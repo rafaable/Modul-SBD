@@ -93,11 +93,28 @@
      DROP COLUMN alamat;
      ```
    - MODIFY tipe data kolom
+     ngubah isi/spec kolom TANPA ganti nama  
+     Bisa: ubah tipe data, ubah panjang (VARCHAR(50) → VARCHAR(100)), tambah constraint NOT NULL atau DEFAULT, ubah posisi (FIRST, AFTER)
      ```sql
      ALTER TABLE mahasiswa
      MODIFY nama VARCHAR(150);
      ```
-   - CHANGE nama kolom
+   - CHANGE
+     full control (rename + ubah semua)
+     Bisa ganti nama kolom, ubah tipe data, ubah constraint, ubah posisi
+     intinya: semua yang bisa MODIFY + rename
+     TAPI  ada aturan penting:
+     Kamu WAJIB tulis ulang semua definisi kolomnya
+     ```SQL
+     ALTER TABLE product
+     CHANGE product_name nama_produk VARCHAR(100);
+     ```
+     rename + ubah tipe
+     ```sql
+     ALTER TABLE product
+     CHANGE created_at created_at DATETIME DEFAULT CURRENT_TIMESTAMP;
+     ```
+     walaupun namanya sama, tetap harus ditulis ulang
      ```sql
      ALTER TABLE mahasiswa
      CHANGE COLUMN nama nama_lengkap VARCHAR(150);
