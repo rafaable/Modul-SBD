@@ -50,6 +50,12 @@ git status
    git commit -m "update file ini"
    git push origin main
    ```
+# Friendly reminder
+
+Database kalian diinsert dulu, SQLnya [di sini](https://github.com/rafaable/Backend_RentalMotor/blob/main/DB/sql.txt), 
+
+mongodbnya konfirmasi dulu ke nina jadinya pakai format ini atau mau disimplify, [collectionnya di sini yah](https://github.com/rafaable/Backend_RentalMotor/blob/main/DB/mongodb.js)
+
 # Step by step
 
 - Pastikan python & git udah terlihat, cirinya kalau buka CMD
@@ -66,7 +72,7 @@ git status
   ```
   python -m venv venv
   ```
-- Terus pindah ke command prompt, masuk dulu ke foldernya terus jalanin ini
+- Terus pindah ke command prompt, masuk dulu ke foldernya terus jalanin ini  
   **TIAP BUKA ULANG PROJECT HARUS JALANIN INI**
   ```
   cd Backend_RentalMotor
