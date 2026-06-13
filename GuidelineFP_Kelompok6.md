@@ -50,5 +50,67 @@ git status
    git commit -m "update file ini"
    git push origin main
    ```
+# Step by step
 
+- Pastikan python & git udah terlihat, cirinya kalau buka CMD
+   ```
+   python --version
+   git --version
+   ```
+   Muncul versi python & gitnya. Kalau belum, install dulu  
+- Buka VSCode pakai command ini
+  ```
+  code .
+  ```
+- Ok sekarang pindah terminal VSCode, jalanin virtual environment
+  ```
+  python -m venv venv
+  ```
+- Terus pindah ke command prompt, masuk dulu ke foldernya terus jalanin ini
+  **TIAP BUKA ULANG PROJECT HARUS JALANIN INI**
+  ```
+  cd Backend_RentalMotor
+  venv\Scripts\activate
+  ```
+  Kalau berhasil muncul gini
+  > (venv) C:\...
+- Install semua library
+  ```
+  pip install fastapi uvicorn pymysql pymongo python-dotenv pydantic
+  ```
+- Di terminal VSCode
+  ```
+  pip freeze > requirements.txt
+  ```
+- Buat file .env yang isinya begini
+  ```
+   MYSQL_HOST=localhost
+   MYSQL_PORT=3306           -- bagian ini disesuaikan!
+   MYSQL_USER=root
+   MYSQL_PASSWORD=
+   MYSQL_DB=rental_motor
+
+   MONGO_URI=mongodb://localhost:27017
+   MONGO_DB=rental_motor
+  ```
+  Bagian mySQL port lihat di XAMPP kalian,
+  sesuaikan isi baris MySQL dan kolom port  
+  lain lainnya harusnya sama sih
+  terus install dotenv
+  ```
+  npm install dotenv
+  ```
+  Kalau nggak bisa, coba salah satu dari ini
+  ```
+  yarn add dotenv
+  pnpm add dotenv
+  ```
+- Jalanin ini di terminal vscode
+  ```
+  uvicorn app.main:app --reload
+  ```
+  terus salin ini di halaman browser mana aja
+  ```
+  http://127.0.0.1:8000/docs#/
+  ```
 
