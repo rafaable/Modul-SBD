@@ -143,5 +143,183 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
+# Cabang
+## GET
+1. Get semua cabang berhasil (tanpa menggunakan filter query parameter)
+2. Get cabang berdasarkan ID berhasil ditemukan
+3. Get cabang berdasarkan Kota berhasil ditemukan
+4. Get cabang dengan filter gabungan (ID dan Kota) berhasil ditemukan
+5. ID tidak ditemukan (`"message": "id not found"` ketika `id_cabang` diisi tapi tidak ada di database)
+6. Kota tidak ditemukan (`"message": "Not found!"` ketika nama `kota` diisi tapi tidak ada di database)
+7. Filter gabungan tidak ditemukan (ketika ID ada tetapi Kota tidak sesuai, atau sebaliknya)
+8. Data cabang kosong (`"message": "data pengguna kosong"` ketika seluruh tabel cabang tidak memiliki *record* sama sekali)
+9. Validasi tipe data ID cabang bukan angka / *invalid integer* (menyebabkan error validasi FastAPI Pydantic sebelum masuk ke query database)
+   
+## POST
+1. Sukses Input Cabang Baru
+```json
+{
+  "nama_cabang": "MLG",
+  "alamat": "Jl. Ijen No. 10, Klojen",
+  "kota": "Malang"
+}
 
+```
 
+2. Informasi kurang lengkap (salah satu field tidak dikirim/`null`)
+```json
+{
+  "nama_cabang": "MLG",
+  "alamat": "Jl. Ijen No. 10, Klojen"
+}
+
+```
+
+3. Field nama_cabang hanya berisi spasi atau kosong (`""`)
+```json
+{
+  "nama_cabang": "   ",
+  "alamat": "Jl. Ijen No. 10, Klojen",
+  "kota": "Malang"
+}
+
+```
+
+4. Field alamat hanya berisi spasi atau kosong (`""`)
+```json
+{
+  "nama_cabang": "MLG",
+  "alamat": "",
+  "kota": "Malang"
+}
+
+```
+
+5. Field kota hanya berisi spasi atau kosong (`""`)
+```json
+{
+  "nama_cabang": "MLG",
+  "alamat": "Jl. Ijen No. 10, Klojen",
+  "kota": "   "
+}
+
+```
+
+6. Nama cabang di kota tersebut sudah terdaftar (Cek Duplikat Kombinasi Nama + Kota)
+```json
+{
+  "nama_cabang": "SDJ",
+  "alamat": "Jl. Berbeda No. 99, Sidoarjo",
+  "kota": "Sidoarjo"
+}
+
+```
+
+7. Sukses Input dengan Nama Cabang sama tapi di Kota yang berbeda
+```json
+{
+  "nama_cabang": "SDJ",
+  "alamat": "Jl. Pahlawan No. 2, Genteng",
+  "kota": "Surabaya"
+}
+
+```
+
+8. Validasi tipe data input tidak valid (misal mengirim angka pada field string, memicu error internal FastAPI/Pydantic)
+
+```json
+{
+  "nama_cabang": 123,
+  "alamat": "Jl. Ijen No. 10, Klojen",
+  "kota": "Malang"
+}
+
+```
+
+## PATCH
+
+1. Sukses Update Semua Field Cabang
+
+```json
+{
+  "nama_cabang": "SDJ BARU",
+  "alamat": "Jl. Gajah Mada No. 100, Sidoarjo",
+  "kota": "Sidoarjo"
+}
+
+```
+
+2. Sukses Update Hanya Field Tertentu (Misal: Alamat Saja)
+
+```json
+{
+  "alamat": "Jl. Raya Delta No. 55, Sidoarjo"
+}
+
+```
+
+3. ID Cabang Tidak Ditemukan (`"message": "ID not found"`)
+
+```json
+// URL: /cabang/999 (ID tidak terdaftar di database)
+{
+  "nama_cabang": "SBY REVO"
+}
+
+```
+
+4. Mengirim Field id_cabang di dalam Body JSON (`"message": "field tidak valid"`)
+
+```json
+{
+  "id_cabang": 1,
+  "nama_cabang": "SBY REVO"
+}
+
+```
+
+5. Mengirim Field Tidak Valid / Di Luar Skema (`"message": "field tidak valid"`)
+
+```json
+{
+  "nama_cabang": "SBY REVO",
+  "karyawan_baru": "Budi"
+}
+
+```
+
+6. Nama Cabang Tidak Valid / Hanya Spasi (`"message": "Nama cabang tidak valid!"`)
+
+```json
+{
+  "nama_cabang": "   "
+}
+
+```
+
+7. Alamat Tidak Valid / Hanya Spasi (`"message": "Alamat tidak valid!"`)
+
+```json
+{
+  "alamat": ""
+}
+
+```
+
+8. Kota Tidak Valid / Hanya Spasi (`"message": "Kota tidak valid!"`)
+
+```json
+{
+  "kota": "   "
+}
+
+```
+
+9. Nama Kota Terlalu Panjang / Lebih dari 50 Karakter (`"message": "Nama kota terlalu panjang!"`)
+
+```json
+{
+  "kota": "Kota Metropolitan Surabaya Bagian Barat Selatan Timur Raya"
+}
+
+```
