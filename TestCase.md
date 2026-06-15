@@ -143,6 +143,111 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
+## PATCH
+
+1. Sukses Update Semua Field Pengguna
+
+```json
+{
+  "kartu_identitas": "3515011203000099",
+  "nomor_telepon": "081299998888",
+  "nama_lengkap": "Aksa Sadajiwa Update",
+  "nomor_sim": "950112345999",
+  "tanggal_kadaluarsa_sim": "2029-05-20",
+  "status_verifikasi": "terverifikasi"
+}
+
+```
+
+2. Sukses Update Hanya Field Tertentu (Misal: Nomor Telepon Saja)
+
+```json
+{
+  "nomor_telepon": "081211112222"
+}
+
+```
+
+3. ID Pengguna Tidak Ditemukan di Database (Error ID not found)
+
+```json
+// URL: /pengguna/999 (ID tidak terdaftar)
+{
+  "nama_lengkap": "Rian Sanjaya"
+}
+
+```
+
+4. Mengirim Field id_pengguna di dalam Body JSON (Field tidak valid untuk diupdate)
+
+```json
+{
+  "id_pengguna": 1,
+  "nama_lengkap": "Rian Sanjaya"
+}
+
+```
+
+5. Kartu Identitas Sudah Terdaftar / Duplikat (Gagal karena batasan UNIQUE)
+
+```json
+{
+  "kartu_identitas": "3515011507010002"
+}
+
+```
+
+6. Nomor SIM Sudah Terdaftar / Duplikat (Gagal karena batasan UNIQUE)
+
+```json
+{
+  "nomor_sim": "960712345679"
+}
+
+```
+
+7. Nama Lengkap Tidak Valid atau Hanya Berisi Spasi Empty String
+
+```json
+{
+  "nama_lengkap": "   "
+}
+
+```
+
+8. Nomor Telepon Tidak Valid atau Hanya Berisi Spasi Empty String
+
+```json
+{
+  "nomor_telepon": ""
+}
+
+```
+
+9. Format Tanggal Kadaluarsa SIM Tidak Valid (Bukan format YYYY-MM-DD)
+
+```json
+{
+  "tanggal_kadaluarsa_sim": "12-03-2028"
+}
+
+```
+
+10. Status Verifikasi Tidak Valid / Di Luar ENUM yang Ditentukan
+
+```json
+{
+  "status_verifikasi": "akun_palsu"
+}
+
+```
+## DELETE
+
+1. Sukses hapus pengguna (ID ditemukan dan tidak memiliki relasi di tabel lain)
+2. ID pengguna tidak ditemukan (`"message": "Not found"`)
+3. Gagal hapus karena pengguna memiliki riwayat transaksi di tabel penyewaan (`"message": "Failed : Memiliki entri di tabel lain"`)
+4. ID pengguna bukan angka / *invalid integer* (Memicu error validasi tipe data FastAPI Pydantic)
+5. ID pengguna kosong atau tidak dimasukkan pada path parameter URL
 # Cabang
 ## GET
 1. Get semua cabang berhasil (tanpa menggunakan filter query parameter)
@@ -323,3 +428,11 @@
 }
 
 ```
+## DELETE
+
+1. Sukses hapus cabang (ID ditemukan, serta tidak memiliki relasi di tabel karyawan maupun kendaraan)
+2. ID cabang tidak ditemukan (`"message": "ID not found"`)
+3. Gagal hapus karena cabang masih memiliki relasi di tabel karyawan (`"message": "Tidak bisa hapus cabang, masih ada karyawan terkait!"`)
+4. Gagal hapus karena cabang masih memiliki relasi di tabel kendaraan (`"message": "Tidak bisa hapus cabang, masih ada kendaraan terkait!"`)
+5. ID cabang bukan angka / *invalid integer* (Memicu error validasi tipe data FastAPI Pydantic)
+6. ID cabang kosong atau tidak dimasukkan pada path parameter URL
