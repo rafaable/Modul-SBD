@@ -381,3 +381,131 @@ Nama Kota Terlalu Panjang
 - GCabang masih memiliki relasi di tabel lain
 - ID cabang invalid integer
 - ID cabang kosong
+
+# Penyewaan
+## Get
+Get berhasil
+* Get all tanpa filter
+* Get id_pengguna = 1
+* Get id_kendaraan = 2
+* Get id_karyawan = 1
+* Get waktu_kembali_down = 2026-06-01, waktu_kembali_up = 2026-06-15
+* Get status_penyewaan = aktif
+* Get id_pengguna = 99
+* Get id_kendaraan = 99
+* Get id_karyawan = 99
+* Get waktu_kembali_down = 2026-01-01, waktu_kembali_up = 2026-01-10
+* Get tanggal terbalik
+* Get status_penyewaan = dibatalkan
+
+# Post
+
+Informasi tidak lengkap
+{
+  "id_pengguna": 20, -- yah tapi sesuaikan lagi
+  "id_kendaraan": 12,
+  "id_karyawan": 9,
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "aktif"
+}
+
+Format tanggal salah
+{
+  "id_pengguna": 20, -- yah tapi sesuaikan lagi
+  "id_kendaraan": 12,
+  "id_karyawan": 9,
+  "waktu_mulai": "09-09-2026",
+  "waktu_selesai_rencana": "09-12-2026",
+  "status_penyewaan": "aktif"
+}
+
+Rentang tanggal terbalik
+{
+  "id_pengguna": 20, -- yah tapi sesuaikan lagi
+  "id_kendaraan": 12,
+  "id_karyawan": 9,
+  "waktu_mulai": "2026-09-19",
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "aktif"
+}
+
+Status selain aktif
+{
+  "id_pengguna": 20, -- yah tapi sesuaikan lagi
+  "id_kendaraan": 12,
+  "id_karyawan": 9,
+  "waktu_mulai": "2026-09-09",
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "dibatalkan"
+}
+
+Pengguna tidak terdaftar
+{
+  "id_pengguna": 100, 
+  "id_kendaraan": 12,
+  "id_karyawan": 9,
+  "waktu_mulai": "2026-09-09",
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "aktif"
+}
+
+Pengguna tidak terverifikasi
+{
+  "id_pengguna": 20, -- cari id terakhir yang selain diverifikasi
+  "id_kendaraan": 12,
+  "id_karyawan": 9,
+  "waktu_mulai": "2026-09-09",
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "aktif"
+}
+
+Pengguna masih memiliki penyewaan aktif
+{
+  "id_pengguna": 10,
+  "id_kendaraan": 12,
+  "id_karyawan": 9,
+  "waktu_mulai": "2026-09-09",
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "aktif"
+}
+
+Kendaraan tidak tersedia
+{
+  "id_pengguna": 20, -- pengguna yang terverifikasi
+  "id_kendaraan": 14,
+  "id_karyawan": 9,
+  "waktu_mulai": "2026-09-09",
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "aktif"
+}
+
+Karyawan tidak terdaftar
+{
+  "id_pengguna": 20, -- pengguna yang terverifikasi
+  "id_kendaraan": 11,
+  "id_karyawan": 90,
+  "waktu_mulai": "2026-09-09",
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "aktif"
+}
+
+Karyawan & kendaraan tidak berasal dari cabang yang sama
+{
+  "id_pengguna": 20, -- pengguna yang terverifikasi
+  "id_kendaraan": 11,
+  "id_karyawan": 1,
+  "waktu_mulai": "2026-09-09",
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "aktif"
+}
+
+Ini yang berhasil
+{
+  "id_pengguna": 20, -- yah tapi sesuaikan lagi
+  "id_kendaraan": 11,
+  "id_karyawan": 1,
+  "waktu_mulai": "2026-09-09",
+  "waktu_selesai_rencana": "2026-09-12",
+  "status_penyewaan": "aktif"
+}
+
