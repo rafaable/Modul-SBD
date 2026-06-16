@@ -618,6 +618,13 @@ Ini berhasil
 
 # Pengembalian
 ## GET
+- Get all tanpa filter
+- id_pengembalian yang ada
+- id penyewaan
+- id karyawan
+- rentang tanggal YYYY-MM-DD
+- not found
+  
 ## PUT
 ## PATCH
 ## DELETE
