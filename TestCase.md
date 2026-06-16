@@ -401,6 +401,7 @@ Get berhasil
 # Post
 
 Informasi tidak lengkap
+```
 {
   "id_pengguna": 20, -- yah tapi sesuaikan lagi
   "id_kendaraan": 12,
@@ -408,8 +409,10 @@ Informasi tidak lengkap
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "aktif"
 }
+```
 
 Format tanggal salah
+```
 {
   "id_pengguna": 20, -- yah tapi sesuaikan lagi
   "id_kendaraan": 12,
@@ -418,8 +421,10 @@ Format tanggal salah
   "waktu_selesai_rencana": "09-12-2026",
   "status_penyewaan": "aktif"
 }
+```
 
 Rentang tanggal terbalik
+```
 {
   "id_pengguna": 20, -- yah tapi sesuaikan lagi
   "id_kendaraan": 12,
@@ -428,8 +433,10 @@ Rentang tanggal terbalik
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "aktif"
 }
+```
 
 Status selain aktif
+```
 {
   "id_pengguna": 20, -- yah tapi sesuaikan lagi
   "id_kendaraan": 12,
@@ -438,8 +445,9 @@ Status selain aktif
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "dibatalkan"
 }
-
+```
 Pengguna tidak terdaftar
+```
 {
   "id_pengguna": 100, 
   "id_kendaraan": 12,
@@ -448,8 +456,10 @@ Pengguna tidak terdaftar
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "aktif"
 }
+```
 
 Pengguna tidak terverifikasi
+```
 {
   "id_pengguna": 20, -- cari id terakhir yang selain diverifikasi
   "id_kendaraan": 12,
@@ -458,8 +468,10 @@ Pengguna tidak terverifikasi
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "aktif"
 }
+```
 
 Pengguna masih memiliki penyewaan aktif
+```
 {
   "id_pengguna": 10,
   "id_kendaraan": 12,
@@ -468,8 +480,10 @@ Pengguna masih memiliki penyewaan aktif
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "aktif"
 }
+```
 
 Kendaraan tidak tersedia
+```
 {
   "id_pengguna": 20, -- pengguna yang terverifikasi
   "id_kendaraan": 14,
@@ -478,8 +492,10 @@ Kendaraan tidak tersedia
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "aktif"
 }
+```
 
 Karyawan tidak terdaftar
+```
 {
   "id_pengguna": 20, -- pengguna yang terverifikasi
   "id_kendaraan": 11,
@@ -488,8 +504,9 @@ Karyawan tidak terdaftar
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "aktif"
 }
-
+```
 Karyawan & kendaraan tidak berasal dari cabang yang sama
+```
 {
   "id_pengguna": 20, -- pengguna yang terverifikasi
   "id_kendaraan": 11,
@@ -498,8 +515,10 @@ Karyawan & kendaraan tidak berasal dari cabang yang sama
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "aktif"
 }
+```
 
 Ini yang berhasil
+```
 {
   "id_pengguna": 20, -- yah tapi sesuaikan lagi
   "id_kendaraan": 11,
@@ -508,4 +527,97 @@ Ini yang berhasil
   "waktu_selesai_rencana": "2026-09-12",
   "status_penyewaan": "aktif"
 }
+```
+## Patch
+status penyewaan selesai (harusnya tidak boleh diubah)
+```
+id 5
 
+{
+  "status_penyewaan": "dibatalkan"
+}
+```
+
+id pengguna tidak terdaftar
+```
+{
+  "id_pengguna": 100
+}
+```
+
+pengguna tidak terverifikasi
+```
+{
+  "id_pengguna": 3
+}
+```
+
+id_kendaraan tidak ada
+```
+{
+  "id_kendaraan": 20
+}
+```
+
+kendaraan tidak tersedia
+```
+{
+  "id_kendaraan": 15
+}
+```
+
+karyawan tidak terdaftar
+```
+{
+  "id_pengguna": 20
+}
+```
+
+salah format tanggal
+```
+{
+  "waktu_mulai": "03-03-2026",
+  "waktu_selesai_rencana": "05-03-2026"
+}
+```
+
+rentang terbalik
+```
+{
+  "waktu_mulai": "2026-06-20",
+  "waktu_selesai_rencana": "2026-06-17"
+}
+```
+
+status diubah jadi selesai padahal cuma bisa diubah lewat trigger
+```
+{
+  status_penyewaan = selesai
+}
+```
+
+karyawan & kendaraan beda cabang
+```
+id 6
+{
+   id_karyawan = 1
+}
+```
+
+Ini berhasil
+```
+{
+   waktu_selesai_rencana = 2026-06-15
+}
+```
+
+## Delete
+- Masih punya relasi pembayaran
+- Masih punya relasi pengembalian
+- Id not found
+
+# Pengembalian
+## GET
+## PUT
+## PATCH
+## DELETE
