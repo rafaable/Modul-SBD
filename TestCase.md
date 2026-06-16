@@ -626,5 +626,20 @@ Ini berhasil
 - not found
   
 ## PUT
+Field kosong  
+Kondisi kendaraan hanya spasi  
+Penyewaan tidak terdaftar  
+Karyawan tidak terdaftar  
+Penyewaan selesai  
+Karyawan beda cabang dengan waktu sewa  
+Tanggal mendahului sewa  
+Sukses + tepat Waktu  
+Sukses + denda  
+
 ## PATCH
+ID pengembalian terlalu besar  
+Karyawan tidak terdaftar  
+Karyawan beda cabang dengan penyewaan  
+
 ## DELETE
+Pilih aja id terserah!
