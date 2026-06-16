@@ -124,22 +124,22 @@
 11. Kedaluarsa SIM lebih dari 5 tahun
 ```
 {
-  "nama_lengkap": "Indah Permata",
-  "kartu_identitas": "3273012345678456",
-  "nomor_sim": "950112345456",
+  "nama_lengkap": "Rian Sanjaya",
+  "kartu_identitas": "3273012345678123",
+  "nomor_sim": "950112345123",
   "tanggal_kadaluarsa_sim": "2032-06-13",
-  "nomor_telepon": "081234567999",
+  "nomor_telepon": "081234567890",
   "status_verifikasi": "terverifikasi"
 }
 ```
 12. Kedaluarsa SIM per hari ini
 ```
 {
-  "nama_lengkap": "Shin Yuna",
-  "kartu_identitas": "3273012345678400",
-  "nomor_sim": "950112345499",
-  "tanggal_kadaluarsa_sim": "2028-06-13",   -- tanggalnya diganti
-  "nomor_telepon": "081234567987",
+  "nama_lengkap": "Dani Agastya",
+  "kartu_identitas": "3273012345678456",
+  "nomor_sim": "950112345456",
+  "tanggal_kadaluarsa_sim": "2029-06-13",   --- diubah
+  "nomor_telepon": "08123456786958",
   "status_verifikasi": "terverifikasi"
 }
 ```
