@@ -12,7 +12,7 @@
 10. Filter gabungan tidak ditemukan
 
 ## POST
-1. Sukses Input
+Sukses Input
 ```
 {
   "nama_lengkap": "Rian Sanjaya",
@@ -23,7 +23,7 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
-2. Informasi kurang lengkap
+Informasi kurang lengkap
 ```
 {
   "nama_lengkap": "Rian Sanjaya",
@@ -33,18 +33,8 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
-3. Kartu identitas duplikat
-```
-{
-  "nama_lengkap": "Rian Sanjaya",
-  "kartu_identitas": "3515011203000001",
-  "nomor_sim": "950112345123",
-  "tanggal_kadaluarsa_sim": "2029-06-13",
-  "nomor_telepon": "081234567890",
-  "status_verifikasi": "terverifikasi"
-}
-```
-4. Nomor SIM duplikat
+
+Nomor SIM duplikat
 ```
 {
   "nama_lengkap": "Rian Sanjaya",
@@ -55,7 +45,8 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
-5. Format SIM Bukan Angka
+
+Format SIM Bukan Angka
 ```
 {
   "nama_lengkap": "Rian Sanjaya",
@@ -66,7 +57,8 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
-6. Kartu identitas kurang 16 digit
+
+Kartu identitas kurang 16 digit
 ```
 {
   "nama_lengkap": "Rian Sanjaya",
@@ -77,7 +69,8 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
-7. Nama lengkap hanya berisi spasi
+
+Nama lengkap hanya berisi spasi
 ```
 {
   "nama_lengkap": "  ",
@@ -88,7 +81,8 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
-8. Panjang nomor telepon tidak valid
+
+Panjang nomor telepon tidak valid
 ```
 {
   "nama_lengkap": "Rian Sanjaya",
@@ -99,7 +93,8 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
-9. Nomor telepon mengandung karakter
+
+Nomor telepon mengandung karakter
 ```
 {
   "nama_lengkap": "Rian Sanjaya",
@@ -110,7 +105,8 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
-10. Status verifikasi tidak sesuai ENUM
+
+Status verifikasi tidak sesuai ENUM
 ```
 {
   "nama_lengkap": "Rian Sanjaya",
@@ -121,7 +117,8 @@
   "status_verifikasi": "aktif"
 }
 ```
-11. Kedaluarsa SIM lebih dari 5 tahun
+
+Kedaluarsa SIM lebih dari 5 tahun
 ```
 {
   "nama_lengkap": "Rian Sanjaya",
@@ -132,21 +129,21 @@
   "status_verifikasi": "terverifikasi"
 }
 ```
-12. Kedaluarsa SIM per hari ini
+
+Kedaluarsa SIM per hari ini
 ```
 {
   "nama_lengkap": "Dani Agastya",
   "kartu_identitas": "3273012345678456",
   "nomor_sim": "950112345456",
-  "tanggal_kadaluarsa_sim": "2029-06-13",   --- diubah
+  "tanggal_kadaluarsa_sim": "2029-06-13",  
   "nomor_telepon": "08123456786958",
   "status_verifikasi": "terverifikasi"
 }
 ```
 ## PATCH
 
-1. Sukses Update Semua Field Pengguna
-
+Sukses Update Semua Field Pengguna
 ```json
 {
   "kartu_identitas": "3515011203000099",
@@ -159,8 +156,7 @@
 
 ```
 
-2. Sukses Update Hanya Field Tertentu (Misal: Nomor Telepon Saja)
-
+Update Field Tertentu
 ```json
 {
   "nomor_telepon": "081211112222"
@@ -168,8 +164,7 @@
 
 ```
 
-3. ID Pengguna Tidak Ditemukan di Database (Error ID not found)
-
+ID Pengguna Tidak Ditemukan di Database (Error ID not found)
 ```json
 // URL: /pengguna/999 (ID tidak terdaftar)
 {
@@ -178,18 +173,7 @@
 
 ```
 
-4. Mengirim Field id_pengguna di dalam Body JSON (Field tidak valid untuk diupdate)
-
-```json
-{
-  "id_pengguna": 1,
-  "nama_lengkap": "Rian Sanjaya"
-}
-
-```
-
-5. Kartu Identitas Sudah Terdaftar / Duplikat (Gagal karena batasan UNIQUE)
-
+Kartu Identitas Duplikat
 ```json
 {
   "kartu_identitas": "3515011507010002"
@@ -197,8 +181,7 @@
 
 ```
 
-6. Nomor SIM Sudah Terdaftar / Duplikat (Gagal karena batasan UNIQUE)
-
+Nomor SIM Duplikat
 ```json
 {
   "nomor_sim": "960712345679"
@@ -206,8 +189,7 @@
 
 ```
 
-7. Nama Lengkap Tidak Valid atau Hanya Berisi Spasi Empty String
-
+Nama Lengkap tidak Valid / Empty String
 ```json
 {
   "nama_lengkap": "   "
@@ -215,8 +197,7 @@
 
 ```
 
-8. Nomor Telepon Tidak Valid atau Hanya Berisi Spasi Empty String
-
+Nomor Telepon Tidak Valid / Empty String
 ```json
 {
   "nomor_telepon": ""
@@ -224,8 +205,7 @@
 
 ```
 
-9. Format Tanggal Kadaluarsa SIM Tidak Valid (Bukan format YYYY-MM-DD)
-
+Format Tanggal Salah
 ```json
 {
   "tanggal_kadaluarsa_sim": "12-03-2028"
@@ -233,8 +213,7 @@
 
 ```
 
-10. Status Verifikasi Tidak Valid / Di Luar ENUM yang Ditentukan
-
+Status Verifikasi Tidak Valid / Di Luar ENUM
 ```json
 {
   "status_verifikasi": "akun_palsu"
@@ -243,25 +222,25 @@
 ```
 ## DELETE
 
-1. Sukses hapus pengguna (ID ditemukan dan tidak memiliki relasi di tabel lain)
-2. ID pengguna tidak ditemukan (`"message": "Not found"`)
-3. Gagal hapus karena pengguna memiliki riwayat transaksi di tabel penyewaan (`"message": "Failed : Memiliki entri di tabel lain"`)
-4. ID pengguna bukan angka / *invalid integer* (Memicu error validasi tipe data FastAPI Pydantic)
-5. ID pengguna kosong atau tidak dimasukkan pada path parameter URL
+- Sukses hapus pengguna (ID ditemukan dan tidak memiliki relasi di tabel lain)
+- ID pengguna tidak ditemukan 
+- Gagal hapus karena pengguna memiliki riwayat transaksi di tabel penyewaan (`"message": "Failed : Memiliki entri di tabel lain"`)
+- ID pengguna invalid integer
+- ID pengguna kosong atau tidak dimasukkan pada path parameter URL
+  
 # Cabang
 ## GET
-1. Get semua cabang berhasil (tanpa menggunakan filter query parameter)
-2. Get cabang berdasarkan ID berhasil ditemukan
-3. Get cabang berdasarkan Kota berhasil ditemukan
-4. Get cabang dengan filter gabungan (ID dan Kota) berhasil ditemukan
-5. ID tidak ditemukan (`"message": "id not found"` ketika `id_cabang` diisi tapi tidak ada di database)
-6. Kota tidak ditemukan (`"message": "Not found!"` ketika nama `kota` diisi tapi tidak ada di database)
-7. Filter gabungan tidak ditemukan (ketika ID ada tetapi Kota tidak sesuai, atau sebaliknya)
-8. Data cabang kosong (`"message": "data pengguna kosong"` ketika seluruh tabel cabang tidak memiliki *record* sama sekali)
-9. Validasi tipe data ID cabang bukan angka / *invalid integer* (menyebabkan error validasi FastAPI Pydantic sebelum masuk ke query database)
+- Get all tanpa filter
+- Get cabang berdasarkan ID
+- Get cabang berdasarkan Kota %like%
+- Get cabang filter gabungan
+- ID tidak ditemukan 
+- Kota tidak ditemukan
+- Filter gabungan tidak ditemukan 
+- ID cabang bukan angka
    
 ## POST
-1. Sukses Input Cabang Baru
+Sukses Input Cabang Baru
 ```json
 {
   "nama_cabang": "MLG",
@@ -271,7 +250,7 @@
 
 ```
 
-2. Informasi kurang lengkap (salah satu field tidak dikirim/`null`)
+Field kurang lengkap 
 ```json
 {
   "nama_cabang": "MLG",
@@ -280,7 +259,7 @@
 
 ```
 
-3. Field nama_cabang hanya berisi spasi atau kosong (`""`)
+Field nama_cabang hanya berisi spasi atau kosong (`""`)
 ```json
 {
   "nama_cabang": "   ",
@@ -290,7 +269,7 @@
 
 ```
 
-4. Field alamat hanya berisi spasi atau kosong (`""`)
+Field alamat hanya berisi spasi atau kosong (`""`)
 ```json
 {
   "nama_cabang": "MLG",
@@ -300,7 +279,7 @@
 
 ```
 
-5. Field kota hanya berisi spasi atau kosong (`""`)
+Field kota hanya berisi spasi atau kosong (`""`)
 ```json
 {
   "nama_cabang": "MLG",
@@ -310,7 +289,7 @@
 
 ```
 
-6. Nama cabang di kota tersebut sudah terdaftar (Cek Duplikat Kombinasi Nama + Kota)
+Nama cabang di kota tersebut sudah terdaftar
 ```json
 {
   "nama_cabang": "SDJ",
@@ -320,7 +299,7 @@
 
 ```
 
-7. Sukses Input dengan Nama Cabang sama tapi di Kota yang berbeda
+Nama Cabang sama tapi di Kota yang berbeda
 ```json
 {
   "nama_cabang": "SDJ",
@@ -330,8 +309,7 @@
 
 ```
 
-8. Validasi tipe data input tidak valid (misal mengirim angka pada field string, memicu error internal FastAPI/Pydantic)
-
+Tipe data input tidak valid
 ```json
 {
   "nama_cabang": 123,
@@ -342,9 +320,7 @@
 ```
 
 ## PATCH
-
-1. Sukses Update Semua Field Cabang
-
+Sukses Update Semua Field Cabang
 ```json
 {
   "nama_cabang": "SDJ BARU",
@@ -354,8 +330,7 @@
 
 ```
 
-2. Sukses Update Hanya Field Tertentu (Misal: Alamat Saja)
-
+Update Field Tertentu 
 ```json
 {
   "alamat": "Jl. Raya Delta No. 55, Sidoarjo"
@@ -363,38 +338,12 @@
 
 ```
 
-3. ID Cabang Tidak Ditemukan (`"message": "ID not found"`)
-
+ID Cabang Tidak Ditemukan
 ```json
-// URL: /cabang/999 (ID tidak terdaftar di database)
-{
-  "nama_cabang": "SBY REVO"
-}
-
+Misal cabang = 99999
 ```
 
-4. Mengirim Field id_cabang di dalam Body JSON (`"message": "field tidak valid"`)
-
-```json
-{
-  "id_cabang": 1,
-  "nama_cabang": "SBY REVO"
-}
-
-```
-
-5. Mengirim Field Tidak Valid / Di Luar Skema (`"message": "field tidak valid"`)
-
-```json
-{
-  "nama_cabang": "SBY REVO",
-  "karyawan_baru": "Budi"
-}
-
-```
-
-6. Nama Cabang Tidak Valid / Hanya Spasi (`"message": "Nama cabang tidak valid!"`)
-
+Nama Cabang Tidak Valid / Hanya Spasi
 ```json
 {
   "nama_cabang": "   "
@@ -402,8 +351,7 @@
 
 ```
 
-7. Alamat Tidak Valid / Hanya Spasi (`"message": "Alamat tidak valid!"`)
-
+Alamat Tidak Valid / Hanya Spasi
 ```json
 {
   "alamat": ""
@@ -411,8 +359,7 @@
 
 ```
 
-8. Kota Tidak Valid / Hanya Spasi (`"message": "Kota tidak valid!"`)
-
+Kota Tidak Valid / Hanya Spasi
 ```json
 {
   "kota": "   "
@@ -420,19 +367,17 @@
 
 ```
 
-9. Nama Kota Terlalu Panjang / Lebih dari 50 Karakter (`"message": "Nama kota terlalu panjang!"`)
-
+Nama Kota Terlalu Panjang
 ```json
 {
   "kota": "Kota Metropolitan Surabaya Bagian Barat Selatan Timur Raya"
 }
 
 ```
-## DELETE
 
-1. Sukses hapus cabang (ID ditemukan, serta tidak memiliki relasi di tabel karyawan maupun kendaraan)
-2. ID cabang tidak ditemukan (`"message": "ID not found"`)
-3. Gagal hapus karena cabang masih memiliki relasi di tabel karyawan (`"message": "Tidak bisa hapus cabang, masih ada karyawan terkait!"`)
-4. Gagal hapus karena cabang masih memiliki relasi di tabel kendaraan (`"message": "Tidak bisa hapus cabang, masih ada kendaraan terkait!"`)
-5. ID cabang bukan angka / *invalid integer* (Memicu error validasi tipe data FastAPI Pydantic)
-6. ID cabang kosong atau tidak dimasukkan pada path parameter URL
+## DELETE
+- Sukses hapus: ID ditemukan, tidak memiliki relasi
+- ID tidak ditemukan
+- GCabang masih memiliki relasi di tabel lain
+- ID cabang invalid integer
+- ID cabang kosong
